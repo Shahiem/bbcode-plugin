@@ -1,0 +1,15 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: Name
+        searchable: true
+
+    notation:
+        label: Notation
+        searchable: true
+
+    image:
+        label: Image

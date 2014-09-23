@@ -2,14 +2,14 @@
 
 use Cms\Classes\ComponentBase;
 
-class Wysiwyg extends ComponentBase
+class Editor extends ComponentBase
 {
 
     public function componentDetails()
     {
         return [
-            'name'        => 'Wysiwyg BBcode editor',
-            'description' => 'Implements a Wysiwyg editor.'
+            'name'        => 'WysiBB BBcode editor',
+            'description' => 'Implements a Wysiwyg BBcode editor.'
         ];
     }
 
@@ -20,7 +20,7 @@ class Wysiwyg extends ComponentBase
                  'title'             => 'Toolbar',
                  'description'       => 'Enabled BBcodes',
                  'default'           => 'bold,italic,underline,strike,sup,sub,|,img,video,link,|,bullist,numlist,|,fontcolor,fontsize,fontfamily,|, justifyleft, justifycenter,justifyright,|, quote,code,table,removeFormat',
-                 'type'              => 'string',
+                 'type'              => 'string'
             ]
         ];
     }
@@ -33,7 +33,7 @@ class Wysiwyg extends ComponentBase
 
     public function onRender()
     {
-        $this->page['toolbar'] = $this->property('toolbar');
+        $this->page['toolbar']           = $this->property('toolbar');
         $this->page['resize_maxheight']  = $this->property('resize_maxheight');
     }
 

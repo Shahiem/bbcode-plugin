@@ -14,7 +14,7 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'BBcode',
-            'description' => 'This plugin implements a BBCode filter and a front-end wysiwyg editor.',
+            'description' => 'The plugin implements a BBCode filter and a front-end wysiwyg editor.',
             'author'      => 'ShahiemSeymor',
             'icon'        => 'icon-bold'
         ];
@@ -23,7 +23,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'ShahiemSeymor\Bbcode\Components\Wysiwyg'  => 'wysiwyg',
+            'ShahiemSeymor\Bbcode\Components\Editor'  => 'wysibbEditor',
         ];
     }
 

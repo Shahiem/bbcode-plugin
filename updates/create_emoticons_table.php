@@ -8,13 +8,12 @@ class CreateEmoticonsTable extends Migration
 
     public function up()
     {
-        Schema::create('shahiemseymor_emoticons', function($table)
+        Schema::create('shahiemseymor_bbcode_emoticons', function($table)
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('notation')->nullable();
             $table->string('name')->nullable();
-            $table->integer('in_forum');
             $table->integer('in_editor');
             $table->timestamps();
         });
@@ -22,7 +21,7 @@ class CreateEmoticonsTable extends Migration
 
     public function down()
     {
-        Schema::drop('shahiemseymor_emoticons');
+        Schema::drop('shahiemseymor_bbcode_emoticons');
     }
 
 }

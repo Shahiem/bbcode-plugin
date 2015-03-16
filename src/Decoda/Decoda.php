@@ -406,8 +406,10 @@ class Decoda {
      */
     public function escape($string, $flags = null) {
         if ($flags === null) {
-            $flags = ENT_QUOTES | ENT_SUBSTITUTE;
+            $flags = ENT_QUOTES;
         }
+
+        $flags |= ENT_SUBSTITUTE;
 
         return htmlentities($string, $flags, 'UTF-8', false);
     }
@@ -422,7 +424,7 @@ class Decoda {
         $string = $this->convertNewlines($string);
 
         if ($this->getConfig('escapeHtml')) {
-            $string = $this->escape($string, ENT_NOQUOTES | ENT_SUBSTITUTE);
+            $string = $this->escape($string, ENT_NOQUOTES);
         }
 
         return $string;
@@ -646,8 +648,11 @@ class Decoda {
 
         if ($this->_isParseable($string)) {
             $string = $this->_parse($this->_extractChunks($string));
+
         } else {
+            $string = $this->_triggerHook('beforeContent', $string);
             $string = $this->convertLineBreaks($string);
+            $string = $this->_triggerHook('afterContent', $string);
         }
 
         $string = $this->_triggerHook('afterParse', $string);
@@ -1044,7 +1049,7 @@ class Decoda {
         if (!$disabled) {
             $found = array();
 
-            preg_match_all('/([a-z]+)=\"(.*?)\"/i', $string, $matches, PREG_SET_ORDER);
+            preg_match_all('/([a-z_\-]+)=\"(.*?)\"/i', $string, $matches, PREG_SET_ORDER);
 
             if ($matches) {
                 foreach ($matches as $match) {
@@ -1054,7 +1059,7 @@ class Decoda {
 
             // Find attributes that aren't surrounded by quotes
             if (!$this->getConfig('strictMode')) {
-                preg_match_all('/([a-z]+)=([^\s' . $ce . ']+)/i', $string, $matches, PREG_SET_ORDER);
+                preg_match_all('/([a-z_\-]+)=([^\s' . $ce . ']+)/i', $string, $matches, PREG_SET_ORDER);
 
                 if ($matches) {
                     foreach ($matches as $match) {
@@ -1579,17 +1584,22 @@ class Decoda {
 
         foreach ($nodes as $node) {
             if (is_string($node)) {
+                $string = $this->_triggerHook('beforeContent', $node);
+
                 if (!$wrapper) {
-                    $parsed .= $this->convertLineBreaks($node);
-                } else {
-                    $parsed .= $node;
+                    $string = $this->convertLineBreaks($string);
                 }
+
+                $string = $this->_triggerHook('afterContent', $string);
+
             } else {
-                $parsed .= $this->getFilterByTag($node['tag'])->parse($node, $this->_parse($node['children'], $node));
+                $string = $this->getFilterByTag($node['tag'])->parse($node, $this->_parse($node['children'], $node));
             }
+
+            $parsed .= $string;
         }
 
-        return $this->_trim($parsed);
+        return $parsed;
     }
 
     /**
@@ -1618,7 +1628,7 @@ class Decoda {
             }
         }
 
-        return $this->_trim($parsed);
+        return $parsed;
     }
 
     /**
@@ -1647,6 +1657,7 @@ class Decoda {
     /**
      * Trim line breaks and not spaces.
      *
+     * @deprecated
      * @param string $string
      * @return string
      */

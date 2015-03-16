@@ -7,9 +7,6 @@ columns:
         label: Name
         searchable: true
 
-    notation:
-        label: Notation
-        searchable: true
-
     image:
         label: Image
+        type: section

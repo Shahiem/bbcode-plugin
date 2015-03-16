@@ -47,8 +47,8 @@ class Plugin extends PluginBase
         ));
 
         $code->addFilter(new \Decoda\Filter\ImageFilter());
-        $code->whitelist($whitelist)->addFilter(new \Decoda\Filter\DefaultFilter());
         $code->addHook(new \Decoda\Hook\EmoticonHook(array('path' => URL::to('plugins/shahiemseymor/bbcode/emoticons').'/')));
+        $code->whitelist($whitelist)->addFilter(new \Decoda\Filter\DefaultFilter());
 
         if(trim(Settings::get('language')) != '')
             $code->setLocale(Settings::get('language'));
@@ -57,16 +57,24 @@ class Plugin extends PluginBase
             $code->addFilter(new \Decoda\Filter\EmailFilter())->addFilter(new \Decoda\Filter\UrlFilter())->setShorthand($text);
 
         $code->defaults();
+        
         return $code->parse();
     }
 
     public function registerSettings()
     {
         return [
+            'emoticons' => [
+                'label'       => 'Emoticons',
+                'description' => 'Manage emoticons.',
+                'category'    => 'BBCode',
+                'icon'        => 'icon-smile-o',
+                'url'       =>  Backend::url('shahiemseymor/bbcode/emoticons')
+            ],
             'settings' => [
-                'label'       => 'BBcode Settings',
+                'label'       => 'Settings',
                 'description' => 'Manage bbcode settings.',
-                'category'    => 'Misc',
+                'category'    => 'BBCode',
                 'icon'        => 'icon-bold',
                 'class'       => 'ShahiemSeymor\Bbcode\Models\Settings'
             ]

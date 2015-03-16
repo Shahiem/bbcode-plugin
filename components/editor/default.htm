@@ -2,10 +2,12 @@
 <script type="text/javascript">
 $(function() {
 	 var wbbOpt = {
-	 	buttons: "{{ toolbar }}"
+	 	buttons: "{{ toolbar }}",
+	 	smileList: {{ emoticonsJson|raw }}
 	 }
 	 
   	$("textarea").wysibb(wbbOpt);
 })
 </script>
 {% endput %}
+

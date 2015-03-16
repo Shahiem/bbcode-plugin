@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: Bbcode
+name: Emoticons
 
 # Model Form Field configuration
 form: @/plugins/shahiemseymor/bbcode/models/emoticons/fields.yaml
@@ -16,16 +16,16 @@ defaultRedirect: shahiemseymor/bbcode/emoticons
 
 # Create page
 create:
-    title: Create Bbcode
+    title: Create Emoticons
     redirect: shahiemseymor/bbcode/emoticons/update/:id
     redirectClose: shahiemseymor/bbcode/emoticons
 
 # Update page
 update:
-    title: Edit Bbcode
+    title: Edit Emoticons
     redirect: shahiemseymor/bbcode/emoticons
     redirectClose: shahiemseymor/bbcode/emoticons
 
 # Preview page
 preview:
-    title: Preview Bbcode
+    title: Preview Emoticons

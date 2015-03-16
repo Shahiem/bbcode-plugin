@@ -1,6 +1,7 @@
 <?php namespace ShahiemSeymor\Bbcode\Components;
 
 use Cms\Classes\ComponentBase;
+use ShahiemSeymor\Bbcode\Models\Emoticon;
 
 class Editor extends ComponentBase
 {
@@ -19,7 +20,7 @@ class Editor extends ComponentBase
             'toolbar' => [
                  'title'             => 'Toolbar',
                  'description'       => 'Enabled BBcodes',
-                 'default'           => 'bold,italic,underline,strike,sup,sub,|,img,video,link,|,bullist,numlist,|,fontcolor,fontsize,fontfamily,|, justifyleft, justifycenter,justifyright,|, quote,code,table,removeFormat',
+                 'default'           => 'bold,italic,underline,strike,sup,sub,|,img,video,link,|,bullist,numlist,|,fontcolor,fontsize,fontfamily,|, justifyleft, justifycenter,justifyright,|, quote,code,table,removeFormat,smilebox',
                  'type'              => 'string'
             ]
         ];
@@ -34,7 +35,10 @@ class Editor extends ComponentBase
     public function onRender()
     {
         $this->page['toolbar']           = $this->property('toolbar');
-        $this->page['resize_maxheight']  = $this->property('resize_maxheight');
+        $this->page['emoticonsJson']           = Emoticon::getJsonEmoctions();
+        $this->page['resizeMaxheight']  = $this->property('resize_maxheight');
+
+      
     }
 
 }

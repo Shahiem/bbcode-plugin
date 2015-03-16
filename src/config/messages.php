@@ -14,14 +14,6 @@ return array(
         'mail' => 'mail',
         'quoteBy' => 'Quote by {author}',
     ),
-    'nl-nl' => array(
-        'spoiler' => 'Spoiler',
-        'hide' => 'Verberg',
-        'show' => 'Toon',
-        'link' => 'link',
-        'mail' => 'mail',
-        'quoteBy' => 'Quote door {author}',
-    ),
     'es-mx' => array(
         'spoiler' => 'Spoiler',
         'hide' => 'Ocultar',
@@ -31,9 +23,9 @@ return array(
         'quoteBy' => '{author} escribió:',
     ),
     'fr-fr' => array(
-        'spoiler' => 'becquet',
+        'spoiler' => 'Spoiler',
         'hide' => 'Cacher',
-        'show' => 'Montrent',
+        'show' => 'Afficher',
         'link' => 'lien',
         'mail' => 'email',
         'quoteBy' => 'Citation de {author}',
@@ -45,6 +37,14 @@ return array(
         'link' => 'collegamento',
         'mail' => 'posta',
         'quoteBy' => 'Quote da {author}',
+    ),
+    'nl-nl' => array(
+        'spoiler' => 'Spoiler',
+        'hide' => 'Verberg',
+        'show' => 'Toon',
+        'link' => 'link',
+        'mail' => 'mail',
+        'quoteBy' => 'Quote door {author}',
     ),
     'de-de' => array(
         'spoiler' => 'Spoiler',
@@ -125,5 +125,13 @@ return array(
         'link' => 'link',
         'mail' => 'mail',
         'quoteBy' => 'Idézve {author}',
+    ),
+    'tr-tr' => array(
+        'spoiler' => 'Spoiler',
+        'hide' => 'Gizle',
+        'show' => 'Göster',
+        'link' => 'link',
+        'mail' => 'mail',
+        'quoteBy' => '{author} tarafından yazılan',
     ),
 );

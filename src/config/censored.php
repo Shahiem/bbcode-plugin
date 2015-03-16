@@ -1,11 +1,11 @@
 <?php
-use ShahiemSeymor\Bbcode\Models\Settings;
 /**
  * @copyright   2006-2014, Miles Johnson - http://milesj.me
  * @license     https://github.com/milesj/decoda/blob/master/license.md
  * @link        http://milesj.me/code/php/decoda
  */
-$censor = array(
+
+return array(
     'asshole',
     'bitch',
     'btch',
@@ -46,7 +46,3 @@ $censor = array(
     'vag',
     'rape',
 );
-
-$words = explode(",", Settings::get('censor_words'));
-
-return array_merge($words, $censor);

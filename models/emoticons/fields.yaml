@@ -19,19 +19,17 @@ fields:
         image-height: 100
 
     notation:
-      span: left
-      label: Notation
-      type: text
-      required: true
+      type: repeater
+      form:
+        fields:
+            notation:
+              span: left
+              label: Notation
+              type: text
+              required: true
 
     in_editor:
       span: left
       label: Display in WYSIWYG editor
-      type: checkbox
-      default: true
-
-    in_forum:
-      span: left
-      label: Display in forum
       type: checkbox
       default: true

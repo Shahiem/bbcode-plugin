@@ -2,9 +2,8 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
-/**
- * Bbcode Back-end Controller
- */
+use System\Classes\SettingsManager;
+
 class Emoticons extends Controller
 {
     public $implement = [
@@ -19,6 +18,7 @@ class Emoticons extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('ShahiemSeymor.Bbcode', 'bbcode', 'bbcode');
+        BackendMenu::setContext('October.System', 'system', 'settings');
+        SettingsManager::setContext('ShahiemSeymor.Bbcode', 'emoticons');
     }
 }

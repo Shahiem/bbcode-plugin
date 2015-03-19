@@ -35,10 +35,8 @@ class Editor extends ComponentBase
     public function onRender()
     {
         $this->page['toolbar']           = $this->property('toolbar');
-        $this->page['emoticonsJson']           = Emoticon::getJsonEmoctions();
-        $this->page['resizeMaxheight']  = $this->property('resize_maxheight');
-
-      
+        $this->page['emoticonsJson']     = Emoticon::getJsonEmoctions();
+        $this->page['resizeMaxheight']   = $this->property('resize_maxheight');
     }
 
 }

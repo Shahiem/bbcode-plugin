@@ -7,7 +7,7 @@ class Emoticon extends Model
 
 	public $table          = 'shahiemseymor_bbcode_emoticons';
     public $attachOne      = [
-	    'emoticon' => ['System\Models\File']
+	    'emoticon'         => ['System\Models\File']
 	];
 
     protected $jsonable    = ['notation'];
@@ -34,8 +34,8 @@ class Emoticon extends Model
 
 	public static function getJsonEmoctions()
     {
-    	$image = Emoticon::all();
-
+    	$image = Emoticon::where('in_editor', 1)->get();
+        $emoticon = [];
     	foreach($image as $fetch)
     	{
             $notation   = array_pluck($fetch->notation, 'notation');
